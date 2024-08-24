@@ -1,72 +1,37 @@
-# Project Title: Web Scraping 1688.com using Selenium and Pandas
+# Web Scraping and MySQL Integration Project for Entervi.com
 
-## Overview
+This project is designed to scrape data from various websites and directly insert the scraped data into a MySQL database. The database is being created for the e-commerce website [entervi.com](https://entervi.com). The purpose of this project is to gather data about companies, their products, and other relevant information, which will be stored in a structured format within the MySQL database. This data will then be used to populate the product listings and other sections of the Entervi.com website.
 
-This project aims to scrape product data from the website `1688.com` using Selenium for browser automation and Pandas for data storage and export. The scraper is designed to handle the complexity of the website's structure, extract product links, and retrieve product details such as name and price. The collected data is then exported to an Excel file for further analysis.
+## Explanation of the Project
 
-## Key Features
+The main goal of this project is to automate the process of collecting data from multiple sources and storing it directly in a MySQL database. This is particularly useful for Entervi.com, an e-commerce platform that requires a large and constantly updated database of products, suppliers, and their associated information.
 
-- **Selenium Automation**: Automates the browser to navigate `1688.com`, collect product links, and scrape detailed product information.
-- **Handling Complex Website Structures**: Implements logic to handle various structures of product listings across different pages.
-- **CAPTCHA Handling**: Includes a page refresh mechanism to bypass CAPTCHA challenges when they appear.
-- **Data Storage**:
-  - **Step 1**: Collects product links and saves them to a `.txt` file.
-  - **Step 2**: Iterates through the collected links, scrapes detailed product information (name, price), and saves the data to an `.xlsx` file.
+The project uses Selenium to handle the web scraping, enabling the automated extraction of data from websites. The scraped data is immediately inserted into the MySQL database without intermediate steps, ensuring that the database is always up to date with the latest information.
 
-## Workflow
+By storing this data in a structured MySQL database, Entervi.com can efficiently display product listings, supplier information, and more, while also providing search and filtering functionality for users.
 
-### 1. **Scraping Product Links**:
-   - The scraper navigates through search result pages on `1688.com`, extracting product links.
-   - All collected links are stored in a file called `collected_product_links.txt`.
+## Installation
 
-### 2. **Scraping Product Details**:
-   - The scraper reads the links from the `collected_product_links.txt` file.
-   - For each product link, it extracts the product name and price.
-   - The extracted data is stored in a Pandas DataFrame.
+1. **Clone the Repository:**
 
-### 3. **Export to Excel**:
-   - The final dataset is exported to an Excel file named `scraped_products.xlsx`.
+   ```bash
+   git clone https://github.com/your_username/your_repository.git
+   cd your_repository
+   ```
 
-## Challenges
+2. **Create a MySQL Database:**
 
-### 1. **Complex Website Structure**
-   - **Problem**: The structure of `1688.com` varies across different pages, which requires handling multiple conditions in the code.
-   - **Solution**: Added conditional logic to handle different HTML structures and ensure consistent data collection.
+   Ensure you have a MySQL database created to store the scraped data. Update the database connection details in `db/connection.py`.
 
-### 2. **CAPTCHA Handling**
-   - **Problem**: CAPTCHA challenges occasionally interrupt the scraping process.
-   - **Solution**: Implemented automatic page refreshes to bypass CAPTCHA challenges and continue the scraping process.
+3. **Install Dependencies:**
 
-### 3. **Inconsistent Page Structures**
-   - **Problem**: Page structures may differ based on the keyword used, leading to possible data omissions.
-   - **Solution**: Additional conditions and fallback mechanisms have been added to handle these variations, ensuring that as much data as possible is captured.
+   Install the required Python packages using `pip`:
 
-## Requirements
-
-- Python 3.x
-- `Selenium` for browser automation
-- `Pandas` for data handling and exporting to Excel
-- WebDriver for Selenium (e.g., ChromeDriver)
-
-## Known Issues
-
-- **CAPTCHA Handling**: The current solution refreshes the page when CAPTCHA appears, but this may not always work. Manual intervention may be required in some cases.
-- **Missing Data**: Due to variations in page structures, some product details might be missed. Regular updates to the code might be needed to handle these cases.
-
-## Future Improvements
-
-- **Enhanced CAPTCHA Bypass**: Implementing more advanced methods for handling CAPTCHA, such as using third-party CAPTCHA-solving services.
-- **Improved Error Handling**: Adding more detailed error handling and logging to ensure that the scraper can recover from unexpected issues.
-- **Scalability**: Refactor the code to make it more modular and scalable, allowing for easier adjustments and maintenance as the website evolves.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Contributing
 
-Contributions are welcome! If you'd like to improve the scraper or add new features, feel free to fork the repository and submit pull requests.
+If you would like to contribute, feel free to fork the repository and submit a pull request. Contributions are welcome!
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-This `README` provides a detailed overview of the project, including the scraping process, challenges, and future improvements. If you encounter any issues, please report them via the Issues section on GitHub.
